@@ -1,0 +1,33 @@
+Francisco.j.ribeiro@inesctec.pt
+
+Programa de sistema de gestão de vendas
+
+Produtos.txt 	200.000		|
+Clientes.txt	20.000		| Leitura
+Vendas_1M.txt	1.000.000	|
+
+Após leitura vamos ter queries interativas
+
+1) Catálogo de Produtos
+2) Catálogo Clientes
+3) Faturação Global
+
+3 supermercados
+Cada supermercado tem 4) Gestão Filiar
+
+1) produtos.txt - por cada linha, um código de produto
+2) clientes.txt - por cada linha, um código de cliente
+4) Vendas_1M.txt - por cada linha, uma venda - *CodigoProduto* *QuantiaDinheiro* *UnidadesVendidas* *Promoção/Normal* *CodigoCliente* *Mês* *IDSupermercado*
+
+-----------------------------Início--------------------------------------------
+Objetivo: ler ficheiros para um array de strings
+ler produtos.txt -> char* produtos[200000];
+ler clientes.txt -> char* clientes[20000];
+ler Vendas_1M.txt -> char* vendas[1000000]; // uma venda so é valida se o codigo de venda existir na base de dados produtos e o codigo cliente existir na base de dados clientes
+
+{Cenas de C}
+FILE* //Apontador para o tipo file
+Abrir ficheiros: fopen
+Ler linha a linha: fscanf / fgets(string destino, tamanho da string, file)
+separar o conteudo da linha: strtok (podemos usar para tirar o \n das strings que lemos) / strsep
+copiar a string para o array: strcpy / strdup (malloc + strcpy)
