@@ -3,23 +3,22 @@
 #include <string.h>
 
 
-#define NRCLIENTES 20000
+#define NRCLIENTES 16384
+#define MAX 10
 
-// clientes[indice][numero]
 
 void readFileClientes (FILE* fclientes,char **clientes){
-	int size = 6;
+	int size = 8;
 	char nrcliente[size];
-	int i = 0; int aux = 0;
-	printf("%d\n",i);
-	while(fgets(nrcliente, size, fclientes) && aux < 10){
-		printf("%d\n", i);
-		clientes[i] = strdup(nrcliente);
-		printf("%d ----- %s", i ,clientes[i]);
-		i++; 
-
+	int i = 0;
+	printf("ANTES DO WHILE: %d\n",i);
+	while(fgets(nrcliente, size, fclientes)){
+		printf("Iteração nº: %d\n", i);
+		printf("Antes do strdup: %s", nrcliente);
+		clientes[i++] = strdup(nrcliente);
+		printf("%d ----- %s\n", i ,clientes[i-1]);	
 	}
-	printf("%d\n", i);
+	fclose(fclientes);
 }
 
 
@@ -31,6 +30,9 @@ int main(){
 	readFileClientes(fclientes, clientes);
 	
 	for(int indice = 0; indice < NRCLIENTES; indice++){
-		printf("%s\n", clientes[indice]);
+		printf("%d : %s", indice,clientes[indice]);
 	}
+
+	fclose(fclientes);
+	return 0;
 }
